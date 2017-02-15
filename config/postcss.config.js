@@ -11,9 +11,7 @@ var postCSSConfig = [
 	require('postcss-import'),
 
 	/* enable mixins like Sass/Less */
-	require('postcss-mixins')({
-	  mixins: require('../src/shared/mixins')
-	}),
+	require('postcss-mixins'),
 
 	/* enable nested css selectors like Sass/Less */
 	require('postcss-nested'),
@@ -30,9 +28,16 @@ var postCSSConfig = [
 
 	/* PostCSS plugin for making calculations with math.js  */
 	require('postcss-math'),
+
+	require("postcss-custom-media"),
 	
 	/* transform W3C CSS color function to more compatible CSS. */
-	require('postcss-color-function')
+	require('postcss-color-function'),
+
+	require('postcss-map')({
+		basePath: 'src/shared',
+    	maps: ['variables.json']
+	})
 ]
 
 // Export the PostCSS Config for usage in webpack
